@@ -1,5 +1,5 @@
 {
-  "name": "name-serach",
+  "name": "name-search",
   "version": "1.0.0",
   "description": "Using OpenAI to search name from a name list.",
   "main": "index.ts",
@@ -15,5 +15,8 @@
     "@types/aws-lambda": "^8.10.141",
     "esbuild": "^0.23.0",
     "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "openai": "^4.52.7"
   }
 }
