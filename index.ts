@@ -13,8 +13,16 @@ export const handler: APIGatewayProxyHandler = async (
 ): Promise<APIGatewayProxyResult> => {
   console.log(`Event: ${JSON.stringify(event, null, 2)}`);
   const params = event.queryStringParameters || {};
-  const name = params.name
+  const name = params.name;
   console.log(name);
+  if (!name) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({
+        error: 'There is no given name',
+      }),
+    };
+  }
 
   const result = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
@@ -33,7 +41,7 @@ export const handler: APIGatewayProxyHandler = async (
   return {
     statusCode: 200,
     body: JSON.stringify({
-      match: result.choices[0].message.content || 'no match found',
+      match: result.choices[0].message.content || 'No match found',
     }),
   };
 };
