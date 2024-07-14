@@ -1,0 +1,19 @@
+{
+  "name": "name-serach",
+  "version": "1.0.0",
+  "description": "Using OpenAI to search name from a name list.",
+  "main": "index.ts",
+  "scripts": {
+    "prebuild": "del /q dist",
+    "build": "esbuild index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js",
+    "postbuild": "cd dist && 7z a -tzip index.zip index.js*"
+  },
+  "keywords": [],
+  "author": "ardenXYZ",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.141",
+    "esbuild": "^0.23.0",
+    "typescript": "^5.5.3"
+  }
+}
